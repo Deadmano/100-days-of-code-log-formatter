@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- Copyright (C) 2019 Phillip Stolić
+   
+This file is part of 100 Days Of Code Log Formatter.
+
+100 Days Of Code Log Formatter is free software: you can redistribute
+it and/or modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+100 Days Of Code Log Formatter is distributed in the hope that it will
+be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with 100 Days Of Code Log Formatter.  If not,
+see <https://www.gnu.org/licenses/>. -->
+<html>
+
+  <head>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>#100DaysOfCode Log Formatter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <noscript>You need JavaScript enabled to run this app.</noscript>
+    <div class="container">
+      <div class="intro">
+        <h1>#100DaysOfCode Log Formatter</h1>
+        <p>This tool will automatically generate the required mark-down for your challenge's GitHub log file based on
+          your input below.</p>
+      </div>
+      <div class="main">
+        <div id="modal-overlay" class="modal-overlay"></div>
+        <div id="modal" class="modal modal-animate-slide-top">
+          <div class="far fa-times-circle button-close-modal"></div>
+          <div id="modal-header" class="modal-header"></div>
+          <div id="modal-content" class="modal-content"></div>
+        </div>
+        <div class="user-input">
+          <div class="flex-container-row">
+            <div class="flex-column">
+              <p>Day</p>
+              <input id="input-day" class="input input-day" type="number"
+                placeholder="The day you are creating a log for." required min="1" max="100">
+              <span class="error-hidden"></span>
+            </div>
+            <div class="flex-column">
+              <p>Date</p>
+              <input id="input-date" class="input input-date" type="date" required>
+              <span class="error-hidden"></span>
+            </div>
+          </div>
+          <div class="flex-container-row">
+            <div class="flex-column">
+              <p>Progress</p>
+              <input id="input-progress" class="input input-progress" type="text"
+                placeholder="Brief overview of what you achieved." autocomplete="off" required>
+              <span class="error-hidden"></span>
+            </div>
+          </div>
+          <div class="flex-container-row">
+            <div class="flex-column">
+              <p>Hours</p>
+              <input id="input-hours" class="input input-hours" type="number"
+                placeholder="Optional: Time spent in hours/minutes." min="1" max="24">
+              <span class="error-hidden"></span>
+            </div>
+            <div class="flex-column">
+              <p>Minutes</p>
+              <input id="input-minutes" class="input input-minutes" type="number"
+                placeholder="Optional: Time spent in hours/minutes." min="1" max="59">
+              <span class="error-hidden"></span>
+            </div>
+          </div>
+          <div class="flex-container-row">
+            <div class="flex-column">
+              <p>Thoughts</p>
+              <textarea id="input-thoughts" class="input input-thoughts" rows="6" cols="30"
+                placeholder="Thoughts you have for the day's challenge. You can cover how you felt, what you learnt, what you struggled with or challenges you overcame, etc."
+                required></textarea>
+              <span class="error-hidden"></span>
+            </div>
+          </div>
+          <div id="links">
+            <div class="flex-container-row">
+              <h3>Work References</h3>
+            </div>
+            <div class="flex-container-column">
+              <div class="link-title flex-column-links">
+                <p>Title</p>
+                <input class="input input-link-title" type="text" placeholder="Optional: Add a title for the reference."
+                  autocomplete="off">
+                <span class="error-hidden"></span>
+              </div>
+              <div class="link-url flex-column-links">
+                <p>URL</p>
+                <input class="input input-link-url" type="url" placeholder="Optional: Add a URL for the reference."
+                  autocomplete="off">
+                <span class="error-hidden"></span>
+              </div>
+            </div>
+          </div>
+          <button id="button-add-link" class="button-add-link button-shadow">Add Another Link</button>
+          <button id="button-format" class="button-format button-shadow">Format Input</button>
+          <div id="flex-container-output" class="flex-container-row">
+            <div class="flex-column">
+              <textarea id="output" class="output" rows="6" cols="30" readonly aria-readonly="true"></textarea>
+              <span id="notification-copy" class="notification notification-hidden"></span>
+            </div>
+          </div>
+          <button id="button-copy" class="button-copy button-shadow">Copy Output</button>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="flex-container-row info-row">
+          <span class="creator">Forged in the fiery depths of code hell by Phillip Stolić.</span>
+          <span><a href="https://twitter.com/PhillipStolic" title="Follow me on Twitter!" target="_blank"><i
+                class="fab fa-twitter footer-link"></i></a> <a href="https://www.patreon.com/Deadmano"
+              title="Support me on Patreon!" target="_blank"><i class="fab fa-patreon footer-link"></i></a> <a
+              href="https://github.com/Deadmano" title="Check out my repositories!" target="_blank"><i
+                class="fab fa-github footer-link"></i></a> <a href="https://codepen.io/Deadmano/"
+              title="Peruse my code snippets!" target="_blank"><i class="fab fa-codepen footer-link"></i></a> <a
+              href="https://www.freecodecamp.org/deadmano" title="View my freeCodeCamp profile!" target="_blank"><i
+                class="fab fa-free-code-camp footer-link"></i></a></span>
+        </div>
+        <div class="flex-container-row version-row">
+          <span class="version"><a href="https://github.com/Deadmano/100-days-of-code-log-formatter"
+              title="View the project on GitHub!" target="_blank"> v1.0.0</a></span>
+        </div>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+
+</html>

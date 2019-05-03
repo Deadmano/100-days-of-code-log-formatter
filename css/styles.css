@@ -1,0 +1,872 @@
+/* Copyright (C) 2019 Phillip Stolić
+   
+This file is part of 100 Days Of Code Log Formatter.
+
+100 Days Of Code Log Formatter is free software: you can redistribute
+it and/or modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+100 Days Of Code Log Formatter is distributed in the hope that it will
+be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with 100 Days Of Code Log Formatter.  If not,
+see <https://www.gnu.org/licenses/>. */
+
+html {
+  scroll-behavior: smooth;
+  /* Scrollbar colour for Firefox 64+ and up. */
+  scrollbar-color: #2a2a2a #1a1a1a;
+}
+
+body {
+  background: #212121;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #f1f1f1;
+}
+
+a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+p {
+  padding: 0 0 5px 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 420px;
+}
+
+.intro {
+  text-align: center;
+  width: 80%;
+  min-width: 420px;
+  padding-bottom: 20px;
+}
+
+.intro h1 {
+  font-size: 26px;
+  padding: 10px 0;
+  padding-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 0 4px 3px #000;
+}
+
+.intro p {
+  font-size: 17px;
+  font-weight: 300;
+  text-shadow: 0 3px 2px #000;
+}
+
+.main {
+  width: 80%;
+  min-width: 420px;
+  background: #484848;
+}
+
+.footer {
+  text-align: center;
+  width: 80%;
+  min-width: 420px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer .flex-container-row.info-row {
+  padding-top: 10px;
+}
+
+
+.footer .flex-container-row.version-row {
+  padding-top: 5px;
+}
+
+.footer .center {
+  justify-content: center;
+}
+
+.footer .footer-link {
+  font-size: 20px;
+  padding: 0 5px;
+  padding-top: 10px;
+}
+
+.footer .footer-link:last-child {
+  padding-right: 0;
+}
+
+.footer-link:hover {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+
+.flex-container-column {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.flex-column {
+  display: inherit;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.flex-column-centered {
+  justify-content: space-between;
+}
+
+.flex-column-links {
+  display: inherit;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background: rgba(51, 51, 51, 0.65);
+}
+
+.link-title p {
+  padding-top: 20px;
+}
+
+.link-url {
+  padding-bottom: 20px;
+}
+
+.flex-column p,
+.flex-container-column p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.flex-container-row {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-container-row h3 {
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-shadow: 0 2px 2px #000;
+}
+
+.flex-row {
+  display: inherit;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 25px;
+}
+
+.user-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.user-input p {
+  font-size: 20px;
+  text-shadow: 0 2px 2px #000;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding: 0 10px;
+  border: none;
+  resize: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background: rgba(121, 121, 121, 0.85);
+  font-weight: 100;
+  font-size: 16px;
+  color: #fff;
+}
+
+.input:focus {
+  background: #313131;
+}
+
+textarea.input {
+  padding: 10px;
+}
+
+/* Begin input/placeholder opacity fix across browsers. */
+input,
+textarea {
+  opacity: 0.6;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  color: #fff;
+}
+
+input[type="date"] {
+  color: #fff;
+  opacity: 0.6;
+}
+
+/* End input/placeholder opacity fix. */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #212121;
+}
+
+#links {
+  width: 100%;
+}
+
+.input-thoughts {
+  box-sizing: border-box;
+  min-height: 200px;
+}
+
+#flex-container-output>.flex-column {
+  margin-bottom: 0;
+}
+
+.hidden {
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  color: rgba(0, 0, 0, 0);
+}
+
+.center {
+  text-align: center;
+}
+
+.fade-out {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.fade-in {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.modal {
+  background-color: white;
+  display: none;
+  min-height: 74.5px;
+  max-height: calc(100% - 100px);
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  z-index: 990;
+}
+
+.modal.modal-visible {
+  display: block;
+  z-index: 1010;
+}
+
+.modal .modal-header {
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.modal-header.modal-error {
+  background: #b00020;
+}
+
+.modal .modal-content {
+  position: relative;
+  height: 100%;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 300;
+  color: #000;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 980;
+}
+
+.modal-overlay.modal-visible {
+  position: fixed;
+  display: block;
+  z-index: 1009;
+}
+
+.modal-animate-slide-top {
+  animation: slide-from-top 0.4s;
+}
+
+@keyframes slide-from-top {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+.error {
+  visibility: visible;
+  min-height: 23px;
+  padding-top: 2px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #db0028;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.error-hidden {
+  visibility: hidden;
+  min-height: 23px;
+  padding-top: 2px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #db0028;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  opacity: 0;
+  transition: visibility 2s, opacity 2s linear;
+}
+
+.error-box {
+  visibility: visible;
+  background: #b00020;
+  transition: background 0.5s linear;
+  opacity: 0.9;
+}
+
+input[type="date"].error-box {
+  opacity: 0.9;
+}
+
+.button-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.button-shadow:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+}
+
+.button-add-link {
+  background: #212121;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  width: 150px;
+  height: 30px;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.button-add-link:hover {
+  background: #2e2e2e;
+}
+
+.button-remove-link {
+  position: absolute;
+  top: 25px;
+  right: 5px;
+  padding: 0;
+  font-size: 22px;
+  color: #a50008;
+  text-shadow: 0 1px 2px #000;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.button-remove-link:hover {
+  color: #bd0009;
+}
+
+.button-close-modal {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+  text-shadow: 0 1px 2px #000;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.button-close-modal:hover {
+  color: #fff;
+}
+
+.button-format {
+  background: #9a0007;
+  font-size: 24px;
+  color: #fff;
+  border: none;
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.button-format:hover {
+  background: #ae0008;
+}
+
+.button-copy {
+  background: #212121;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  height: 40px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.button-copy:hover {
+  background: #313131;
+}
+
+.notification {
+  visibility: visible;
+  opacity: 1;
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  transition: visibility 1s, opacity 1s linear;
+  min-height: 18px;
+  padding-top: 2px;
+}
+
+.notification.notification-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.notification.notification-success {
+  color: #00b020;
+}
+
+.notification-failure {
+  color: #db0028;
+}
+
+.output {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  background: rgba(33, 33, 33, 0.7);
+  font-size: 16px;
+  font-weight: 300;
+  color: #f1f1f1;
+  padding: 20px;
+  margin-top: 30px;
+  border: none;
+  resize: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* MEDIA QUERIES */
+/* ------------ */
+
+/* Extra small devices and phones starting from 400px up to 599px. */
+@media only screen and (max-width: 599px) and (min-width: 400px) {
+  .intro {
+    width: 85%;
+  }
+
+  .intro p {
+    margin: 0 10%;
+  }
+}
+
+/* Small devices such as smartphones/tablets from 600px and upwards. */
+@media only screen and (min-width: 600px) {
+
+  .intro,
+  .main,
+  .footer {
+    width: 85%;
+  }
+
+  .footer .flex-container-row.info-row {
+    flex-direction: column;
+  }
+
+  .intro h1 {
+    font-size: calc(26px + 1.5vw);
+  }
+
+  .intro p {
+    font-size: calc(10px + 1.2vw);
+    margin: 0 calc(2% + 2.5vw);
+  }
+}
+
+/* Medium devices such as smartphones/tablets from 900px and upwards. */
+@media only screen and (min-width: 900px) {
+  .intro h1 {
+    font-size: calc(30px + 1.8vw);
+  }
+
+  .intro p {
+    font-size: calc(11px + 1vw);
+    margin: 0 calc(2% + 2.5vw);
+  }
+
+  .user-input p {
+    font-size: 21px;
+  }
+
+  .flex-container-row h3 {
+    font-size: 23px;
+  }
+
+  .flex-column {
+    margin: 0 20px;
+  }
+
+  .flex-column-links {
+    margin: 0 20px;
+  }
+
+  .input,
+  .error,
+  .error-hidden,
+  .notification,
+  .output {
+    font-size: 17px;
+  }
+
+  .notification {
+    min-height: 24px;
+    padding-top: 6px;
+  }
+
+  .modal {
+    width: 60%;
+  }
+
+  .modal .modal-header {
+    font-size: 21px;
+  }
+
+  .modal .modal-content {
+    font-size: 19px;
+  }
+
+  .button-add-link {
+    font-size: 18px;
+    width: 170px;
+    height: 34px;
+  }
+
+  .button-remove-link,
+  .button-close-modal {
+    font-size: 24px;
+  }
+
+  .button-remove-link {
+    right: 25px;
+  }
+
+  .button-format {
+    font-size: 26px;
+    width: 220px;
+    height: 66px;
+  }
+
+  .button-copy {
+    font-size: 20px;
+    height: 50px;
+  }
+
+  .footer .flex-container-row.info-row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+
+  .footer .flex-container-row.version-row {
+    justify-content: left;
+  }
+
+  .footer .footer-link {
+    padding-top: 0;
+  }
+
+  .footer .flex-container-row.version-row {
+    padding-bottom: 10px;
+  }
+}
+
+/* Medium laptops/monitors starting from 1024px and upwards. */
+@media only screen and (min-width: 1024px) {
+
+  .main,
+  .footer {
+    width: 95%;
+    max-width: 1000px;
+  }
+
+  .intro {
+    max-width: 1000px;
+  }
+
+  .intro h1 {
+    font-size: 52px;
+  }
+
+  .intro p {
+    font-size: calc(11px + 1vw);
+    margin: 0 calc(10% + 2.3vw);
+  }
+
+  .flex-container-row {
+    flex-wrap: nowrap;
+  }
+
+  .flex-container-row h3 {
+    padding-bottom: 20px;
+  }
+
+  .flex-column {
+    margin: 0 30px;
+    margin-bottom: 10px;
+  }
+
+  .flex-column-links {
+    margin: 0 30px;
+  }
+
+  .button-remove-link {
+    font-size: 26px;
+    right: 35px;
+  }
+
+  .button-close-modal {
+    font-size: 26px;
+  }
+
+  .footer .flex-container-row.info-row {
+    padding-top: 15px;
+  }
+
+  .footer .footer-link {
+    font-size: 22px;
+    padding: 0 5px;
+  }
+
+  .footer .creator {
+    font-size: 18px;
+  }
+
+}
+
+/* Desktops and other medium devices starting from 1280px and upwards. */
+@media only screen and (min-width: 1280px) {
+
+  .main,
+  .intro,
+  .footer {
+    width: 80%;
+  }
+
+  .intro p {
+    font-size: 24px;
+  }
+
+  .modal {
+    width: 50%;
+  }
+}
+
+/* Laptops and desktops from 1366px and upwards. */
+@media only screen and (min-width: 1366px) {
+
+  .main,
+  .footer {
+    width: 75%;
+    max-width: 1200px;
+  }
+
+  .intro {
+    width: 70%;
+    max-width: 1200px;
+  }
+
+  .intro p {
+    margin: 0 calc(10% + 4.5vw);
+  }
+
+  .input,
+  .error,
+  .error-hidden,
+  .notification,
+  .output {
+    font-size: 18px;
+  }
+
+  .modal {
+    max-width: 600px;
+  }
+}
+
+/* Large desktops and other large devices from 1920px and upwards. */
+@media only screen and (min-width: 1920px) {
+
+  .main,
+  .footer {
+    width: 70%;
+    max-width: 1400px;
+  }
+
+  .intro {
+    max-width: 1400px;
+  }
+
+  .intro p {
+    margin: 0;
+  }
+
+  .user-input {
+    padding: 20px 40px;
+  }
+
+  .flex-column,
+  .flex-column-links {
+    margin: 0 50px;
+  }
+
+  .flex-column {
+    margin-bottom: 10px;
+  }
+
+  .flex-container-row h3 {
+    font-size: 24px;
+  }
+
+  .modal {
+    width: 35%;
+  }
+
+  .modal .modal-header {
+    font-size: 22px;
+  }
+
+  .modal .modal-content {
+    font-size: 20px;
+  }
+
+  .button-add-link {
+    font-size: 20px;
+    width: 190px;
+    height: 38px;
+  }
+
+  .button-remove-link {
+    right: 55px;
+  }
+
+  .button-format {
+    font-size: 28px;
+    width: 240px;
+    height: 72px;
+  }
+
+  .button-copy {
+    font-size: 22px;
+    height: 50px;
+  }
+
+  .footer .flex-container-row.info-row {
+    padding-top: 20px;
+  }
+
+  .footer .footer-link {
+    font-size: 24px;
+    padding: 0 8px;
+  }
+
+  .footer .creator {
+    font-size: 20px;
+  }
+
+  .footer .version {
+    font-size: 18px;
+  }
+}
+
+/* Extra large desktops and all other larger devices from 2560px and upwards. */
+@media only screen and (min-width: 2560px) {
+
+  .input,
+  .error,
+  .error-hidden,
+  .notification,
+  .output {
+    font-size: 19px;
+  }
+
+  .button-remove-link,
+  .button-close-modal {
+    font-size: 28px;
+  }
+}
