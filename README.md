@@ -1,4 +1,4 @@
-# #100DaysOfCodeLog Formatter
+# #100DaysOfCode Log Formatter
 
 [![HitCount](http://hits.dwyl.io/Deadmano/https://githubcom/Deadmano/100-days-of-code-log-formatter.svg)](https://github.com/Deadmano/100-days-of-code-log-formatter) [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/Deadmano/100-days-of-code-log-formatter/blob/master/COPYING) [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/Deadmano/100-days-of-code-log-formatter.svg?label=latest)](https://github.com/Deadmano/100-days-of-code-log-formatter/releases) [![Discord](https://img.shields.io/discord/243415090856984593.svg?label=discord)](https://discordapp.com/invite/gh4CaB6) [![Twitter](https://img.shields.io/twitter/follow/PhillipStolic.svg?label=Show%20Some%20Love&style=social)](https://twitter.com/intent/follow?screen_name=PhillipStolic)
 
